@@ -96,7 +96,7 @@ function renderLicenseLink(liscense) {
         }
 
 
-
+//generate read me file
         generateMarkdown({ title, description, installion, usage, contribute, github, email, license })
             `${renderLicenseBadge(license)}
 
@@ -141,4 +141,5 @@ function renderLicenseLink(liscense) {
                 then((reponses) = writeFile("README.md"), generateMarkdown(reponses))
                     .then(() => console.log("generating README File"))
                     .catch((err)) = console.error(err)``
-            
+        }
+

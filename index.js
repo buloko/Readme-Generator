@@ -3,19 +3,25 @@ const fs = require('fs');
 
 const { writeFile } = require('fs').promises
 const { type } = require('os');
+const generateMarkdown = require('./generateMarkdown');
 // const { default: CheckboxPrompt } = require('inquirer/lib/prompts/checkbox');
 
-const questions = () => {
-    return inquirer.questions([
+const promptUser = () => {
+    return inquirer.prompt([
         {
             type: "input",
-            name: "username",
+            name: "github",
             message: "What is your Github username?"
         },
         {
+            type:"input",
+            name:"email",
+            message:"What is your email?"
+        },
+        {
             type: "input",
-            name: "Project name",
-            message: "What is your project's name?"
+            name: "title",
+            message: "What is your project's title?"
         },
         {
             type: "input",
@@ -29,7 +35,7 @@ const questions = () => {
         },
         {
             type:"input",
-            name:"dependencies",
+            name:"installation",
             messgae:"What command should be run to install dependencies?",
         },
         {
@@ -39,23 +45,56 @@ const questions = () => {
         },
         {
             type:"input",
-            name:"using the repo",
+            name:"usage",
             message:"What does the user need to know about using the repo?",
         },
         {
             type:"input",
-            name:"Contribution",
-            message:"What does the user need to know about contributing to the repo"
+            name:"contribute",
+            message:"What does the user need to know about contributing to the repo?"
+        },
+        {
+            type:"input",
+            name:"liscense",
+            message:"selecting the license used",
+            choices:["MIT", "Mozilla", "Apache", "Artisitc", "IBM"]
         }
 
     ])
 }
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-const init = () => {
-    promptUser()
+function renderLicenseBadge(license) {
+    if (license)
+    return `[![${license} license](https://img.shields.io/badge/License-${license}-blue.svg)](${renderLicenseLink(license)})`
+} else {
+    return``;
 }
+
+function renderLicenseLink(liscense) {
+    if(license==='MIT') {
+        return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
+      }
+      if(license==='Artisitc-2.0') {
+        return `[![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)`
+      }
+      if (license === 'Apache') {
+        return `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`
+      }
+      {
+      if(license ==='Mozilla') {
+        return`[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`
+      }
+      if(license==='IBM') {
+        return `[![License: IPL 1.0](https://img.shields.io/badge/License-IPL%201.0-blue.svg)](https://opensource.org/licenses/IPL-1.0)`
+      }
+    }
+
+    
+
+    function renderLicenseSection(license) {
+        if(license){
+            return `##License`
+        }
+    
+
+
+   generateMarkdown({title, description, installion, usage, contribute, github,email, liscense})

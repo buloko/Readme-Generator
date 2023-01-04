@@ -3,6 +3,7 @@ const fs = require('fs');
 
 const { writeFile } = require('fs').promises
 const { type } = require('os');
+const renderLicenseSection = require(`./generateMarkdown`);
 // const generateMarkdown = require('./generateMarkdown');
 // const { default: CheckboxPrompt } = require('inquirer/lib/prompts/checkbox');
 
@@ -62,40 +63,40 @@ const promptUser = () => {
 
     ])
 }
-function renderLicenseBadge(license) {
-    if (license) {
-        return `[![${license} license](https://img.shields.io/badge/License-${license}-blue.svg)](${renderLicenseLink(license)})`
-    } else {
-        return `    `;
-    }
-}
-function renderLicenseLink(liscense) {
-    if (license === 'MIT') {
-        return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
-    }
-    if (license === 'Artisitc-2.0') {
-        return `[![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)`
-    }
-    if (license === 'Apache') {
-        return `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`
-    }
-    {
-        if (license === 'Mozilla') {
-            return `[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`
-        }
-        if (license === 'IBM') {
-            return `[![License: IPL 1.0](https://img.shields.io/badge/License-IPL%201.0-blue.svg)](https://opensource.org/licenses/IPL-1.0)`
-        }
-    }
-}
+// function renderLicenseBadge(license) {
+//     if (license) {
+//         return `[![${license} license](https://img.shields.io/badge/License-${license}-blue.svg)](${renderLicenseLink(license)})`
+//     } else {
+//         return `    `;
+//     }
+// }
+// function renderLicenseLink(liscense) {
+//     if (license === 'MIT') {
+//         return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
+//     }
+//     if (license === 'Artisitc-2.0') {
+//         return `[![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)`
+//     }
+//     if (license === 'Apache') {
+//         return `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`
+//     }
+//     {
+//         if (license === 'Mozilla') {
+//             return `[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`
+//         }
+//         if (license === 'IBM') {
+//             return `[![License: IPL 1.0](https://img.shields.io/badge/License-IPL%201.0-blue.svg)](https://opensource.org/licenses/IPL-1.0)`
+//         }
+//     }
+// }
 
 
 
-function renderLicenseSection(license) {
-    if (license) {
-        return `##License`
-    }
-}
+// function renderLicenseSection(license) {
+//     if (license) {
+//         return `##License`
+//     }
+// }
 
 
 //generate read me file
@@ -144,3 +145,4 @@ const init = () => {
         .then(() => console.log("generating README File"))
         .catch((err) => console.error(err));
 }
+init();

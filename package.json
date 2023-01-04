@@ -1,7 +1,7 @@
 {
   "name": "readme-generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "This program allows you to automically generate a readme file just from answering a couple questions about your project ### Usage  Answer the questions to generate your file",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,5 +18,6 @@
   "homepage": "https://github.com/buloko/Readme-Generator#readme",
   "dependencies": {
     "inquirer": "^8.2.4"
-  }
+  },
+  "keywords": []
 }

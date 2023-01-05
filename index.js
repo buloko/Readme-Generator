@@ -37,7 +37,7 @@ const promptUser = () => {
         {
             type: "input",
             name: "installation",
-            messgae: "What command should be run to install dependencies?",
+            message: "What command should be run to install dependencies?",
         },
         {
             type: "input",
@@ -124,7 +124,7 @@ const promptUser = () => {
   Provide instructions and examples for use. Include screenshots as needed.
   ## Credits
   ##License
-  ${renderLicenseSection}
+  ${renderLicenseSection(license)}
   ## Badges
   ${data.Badge}
   ## How to Contribute

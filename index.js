@@ -1,9 +1,10 @@
-const inquirer = require(`inquirer`);
+const inquirer = require('inquirer');
 const fs = require('fs');
 
-const { writeFile } = require('fs').promises
-const { type } = require('os');
+const { writeFile } = require('fs').promises;
+// const { type } = require('os');
 const renderLicenseSection = require(`./generateMarkdown`);
+const renderLicenseBadge = require(`./generateMarkdown`);
 // const generateMarkdown = require('./generateMarkdown');
 // const { default: CheckboxPrompt } = require('inquirer/lib/prompts/checkbox');
 
@@ -100,7 +101,7 @@ const promptUser = () => {
 
 
 //generate read me file
- const generateMarkdown = ({ title, description, installion, usage, contribute, github, email, license }) =>
+ const generateMarkdown = ({ title, description, installation, Badge, usage, contribute, test, github, email, license }) =>
     `${renderLicenseBadge(license)}
 
   #Your-Project-Title
@@ -141,7 +142,7 @@ const promptUser = () => {
 
 const init = () => {
     promptUser()
-        .then((reponses) => writeFile("README.md"), generateMarkdown(reponses))
+        .then((answers) => writeFile("README.md", generateMarkdown(answers)))
         .then(() => console.log("generating README File"))
         .catch((err) => console.error(err));
 }

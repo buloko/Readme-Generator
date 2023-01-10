@@ -10,9 +10,9 @@ const renderLicenseSection = require(`./generateMarkdown`);
 const promptUser = () => {
     return inquirer.prompt([
         {
-            type: "input",
-            name: "github",
-            message: "What is your Github username?"
+            type: 'input',
+            name: 'github',
+            message: 'What is your Github username?'
         },
         {
             type: "input",

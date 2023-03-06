@@ -1,9 +1,9 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-const fs =require('fs');
+const fs = require('fs');
 function renderLicenseBadge(license) {
-  if(license) {
-    return`[!${license}] license](https://img) `
+  if (license) {
+    return `[!${license}] License](https://img.shields.io/badge/License-${license}-brightgreen.svg)](${renderLicenseLink(license)})`
   } else {
     return``
   }
@@ -34,12 +34,15 @@ if(license==='IBM') {
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
   if (license) {
-    return `##License
+    return `## License
     This project is protectded by the ${license} license. To learn more about what this means, click the license badge at the top.`
   } else{
     return``;
   }
 }
+
+
+module.exports = renderLicenseSection;
 
 // // TODO: Create a function to generate markdown for README
 // function generateMarkdown(data) {
@@ -84,5 +87,3 @@ function renderLicenseSection(license) {
 
 // `;
 // }
-
-module.exports = renderLicenseSection;

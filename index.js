@@ -1,10 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-
+const generateMarkdown = require('./generateMarkdown')
 const { writeFile } = require('fs').promises;
 // const { type } = require('os');
-const {renderLicenseBadge} = require('./utils/generateMarkdown');
-const {renderLicenseSection} = require('./utils/generateMarkdown');
+// const {renderLicenseSection} = require('./utils/generateMarkdown');
 // const generateMarkdown = require('./generateMarkdown');
 // const { default: CheckboxPrompt } = require('inquirer/lib/prompts/checkbox');
 
@@ -41,6 +40,11 @@ const promptUser = () => {
             message: "What command should be run to install dependencies?",
         },
         {
+          type:"input",
+          name:"credits",
+          message:"List your collaborators, if any, with links to their GitHub profiles.",
+        },
+        {
             type: "input",
             name: "test",
             message: "What command shold be run to run test?",
@@ -64,60 +68,63 @@ const promptUser = () => {
 
     ]);
 };
+  init = () => {
+          promptUser()
+          .then((answers) => writeFile("README.md", generateMarkdown(answers)))
+          .then(() => console.log("generating README File"))
+          .catch((err) => console.error(err));
+        }
 
+        init();
 
-//generate read me file
-const generateMarkdown = ({ title, description, installation, Badge, usage, contribute, test, github, email, license }) =>
-`
+// const {renderLicenseBadge} = require('./utils/generateMarkdown');
+// //generate read me file
+// const generateMarkdown = ({ title, description, installation, Badge, usage, contribute, test, github, email, license }) =>
+// `
 
-#Your-Project-Title
-${title}
+// #Your-Project-Title
+// ${title}
 
-${renderLicenseBadge(license)}
+// ${renderLicenseBadge(license)}
   
-## Description
-  ${description}
+// ## Description
+//   ${description}
   
-  ##Table of Contents   
+//   ## Table of Contents   
   
-  - [Installation](#Installation)
-  - [Usage](#Usage)
-  - [How-to-Contribute](#contribute)
-  - [Tests](#Tests)
-  - [Credits](#Credits)
-  - [License](#License)
-  - [Questions](#Questions)
+//   - [Installation](#Installation)
+//   - [Usage](#Usage)
+//   - [How-to-Contribute](#contribute)
+//   - [Tests](#Tests)
+//   - [Credits](#Credits)
+//   - [License](#License)
+//   - [Questions](#Questions)
   
-  ## Installation
-  ${installation}
-  What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
-  ## Usage
-  ${usage}
-  Provide instructions and examples for use. Include screenshots as needed.
-  ## Credits
-  ## Badges
-  ${Badge}
-  ## How-to-Contribute
-  ${contribute}
-  If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-  ## Tests
-  ${test}
-  ## Questions
-  #Github:${github}
-  #Email: ${email}
+//   ## Installation
+//   ${installation}
+//   What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+//   ## Usage
+//   ${usage}
+//   Provide instructions and examples for use. Include screenshots as needed.
+//   ## Credits
+//   ## Badges
+//   ${Badge}
+//   ## How-to-Contribute
+//   ${contribute}
+//   If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+//   ## Tests
+//   ${test}
+//   ## Questions
+//   #Github:${github}
+//   #Email: ${email}
   
-  ## License
-  ${license}
+//   ## License
+//   ${license}
   
-  Contact me for any concerns or questions`;
+//   Contact me for any concerns or questions`;
   
-  const init = () => {
-      promptUser()
-      .then((answers) => writeFile("README.md", generateMarkdown(answers)))
-      .then(() => console.log("generating README File"))
-      .catch((err) => console.error(err));
-    }
-    init();
+// /
+//     init();
     // function renderLicenseBadge(license) {
     //     if (license) {
     //         return `[![${license} license](https://img.shields.io/badge/License-${license}-blue.svg)](${renderLicenseLink(license)})`

@@ -106,3 +106,5 @@ dist
 
 #Ds_Store
 .Ds_Store
+
+node_modules

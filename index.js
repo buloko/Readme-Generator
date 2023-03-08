@@ -3,8 +3,8 @@ const fs = require('fs');
 
 const { writeFile } = require('fs').promises;
 // const { type } = require('os');
-const renderLicenseSection = require(`./generateMarkdown`);
-const renderLicenseBadge = require(`./generateMarkdown`);
+const {renderLicenseBadge} = require('./utils/generateMarkdown');
+const {renderLicenseSection} = require('./utils/generateMarkdown');
 // const generateMarkdown = require('./generateMarkdown');
 // const { default: CheckboxPrompt } = require('inquirer/lib/prompts/checkbox');
 
@@ -70,6 +70,7 @@ const promptUser = () => {
 const generateMarkdown = ({ title, description, installation, Badge, usage, contribute, test, github, email, license }) =>
 `${renderLicenseBadge(license)}
 
+
   #Your-Project-Title
   ${title}
   
@@ -80,7 +81,7 @@ const generateMarkdown = ({ title, description, installation, Badge, usage, cont
   
   - [Installation](#Installation)
   - [Usage](#Usage)
-  - [contribute](#HowtoContribute)
+  - [contribute](#How-to-Contribute)
   - [Tests](#Tests)
   - [Credits](#Credits)
   - [License](#License)
@@ -93,11 +94,9 @@ const generateMarkdown = ({ title, description, installation, Badge, usage, cont
   ${usage}
   Provide instructions and examples for use. Include screenshots as needed.
   ## Credits
-  ## License
-  ${renderLicenseSection(license)}
   ## Badges
   ${Badge}
-  ## How to Contribute
+  ## How-to-Contribute
   ${contribute}
   If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
   ## Tests
@@ -105,6 +104,9 @@ const generateMarkdown = ({ title, description, installation, Badge, usage, cont
   ## Questions
   #Github:${github}
   #Email: ${email}
+  
+  ## License
+  ${renderLicenseBadge(license)}
   
   Contact me for any concerns or questions`;
   

@@ -68,20 +68,21 @@ const promptUser = () => {
 
 //generate read me file
 const generateMarkdown = ({ title, description, installation, Badge, usage, contribute, test, github, email, license }) =>
-`${renderLicenseBadge(license)}
+`
 
+#Your-Project-Title
+${title}
 
-  #Your-Project-Title
-  ${title}
+${renderLicenseBadge(license)}
   
-  ## Description
+## Description
   ${description}
   
   ##Table of Contents   
   
   - [Installation](#Installation)
   - [Usage](#Usage)
-  - [contribute](#How-to-Contribute)
+  - [How-to-Contribute](#contribute)
   - [Tests](#Tests)
   - [Credits](#Credits)
   - [License](#License)
@@ -106,7 +107,7 @@ const generateMarkdown = ({ title, description, installation, Badge, usage, cont
   #Email: ${email}
   
   ## License
-  ${renderLicenseBadge(license)}
+  ${license}
   
   Contact me for any concerns or questions`;
   

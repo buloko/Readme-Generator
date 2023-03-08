@@ -3,7 +3,7 @@
 const fs = require('fs');
 function renderLicenseBadge (license) { 
   if (license) {
-    return `[![${license} License](https://img.shields.io/badge/License-${license}-brightgreen.svg)](${renderLicenseLink(license)})`
+    return `[![Liscense: ${license} ](https://img.shields.io/badge/License-${license}-brightgreen.svg)](${renderLicenseLink(license)})`
   } else {
     return``;
   }
@@ -44,7 +44,7 @@ function renderLicenseSection(license) {
   }
 }
 
-module.exports = generateMarkdown;
+module.exports = renderLicenseBadge;
 
 // // TODO: Create a function to generate markdown for README
 // function generateMarkdown(data) {

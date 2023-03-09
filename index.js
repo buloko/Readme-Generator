@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./generateMarkdown')
+const generateMarkdown = require('./utils/generateMarkdown')
 const { writeFile } = require('fs').promises;
 // const { type } = require('os');
 // const {renderLicenseSection} = require('./utils/generateMarkdown');
@@ -28,11 +28,6 @@ const promptUser = () => {
             type: "input",
             name: "description",
             message: "Provide a short description explaining the what, why,and how of your project"
-        },
-        {
-            type: "input",
-            name: "Badge",
-            message: "What kind of license does your project use?"
         },
         {
             type: "input",
